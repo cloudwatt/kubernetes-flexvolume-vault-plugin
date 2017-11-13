@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func writeTokenData(token string, metadata []byte, dir, tokenfilename string) error {
+func writeTokenData(token string, metadata []byte, dir, tokenfilename string, tokenfilepermissions os.FileMode) error {
 	err := os.MkdirAll(dir, 0755)
 	if err != nil {
 		return fmt.Errorf("Failed to mkdir %v: %v", dir, err)
@@ -17,20 +17,20 @@ func writeTokenData(token string, metadata []byte, dir, tokenfilename string) er
 	tokenpath := path.Join(dir, tokenfilename)
 	fulljsonpath := path.Join(dir, strings.Join([]string{tokenfilename, ".json"}, ""))
 
-	err = ioutil.WriteFile(tokenpath, []byte(strings.TrimSpace(token)), 0644)
+	err = ioutil.WriteFile(tokenpath, []byte(strings.TrimSpace(token)), tokenfilepermissions)
 	if err != nil {
 		return err
 	}
-	err = os.Chmod(tokenpath, 0644)
+	err = os.Chmod(tokenpath, tokenfilepermissions)
 	if err != nil {
 		return err
 	}
 
-	err = ioutil.WriteFile(fulljsonpath, metadata, 0644)
+	err = ioutil.WriteFile(fulljsonpath, metadata, tokenfilepermissions)
 	if err != nil {
 		return err
 	}
-	err = os.Chmod(fulljsonpath, 0644)
+	err = os.Chmod(fulljsonpath, tokenfilepermissions)
 	return err
 }
 
