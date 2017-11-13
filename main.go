@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/fcantournet/kubernetes-flexvolume-vault-plugin/flexvolume"
@@ -64,6 +65,16 @@ func (v vaultSecretFlexVolume) Mount(dir string, dev string, options map[string]
 		role = rolestring
 	}
 
+	tokenFilePermissions := os.FileMode(0644)
+	tokenFilePermissionsString, ok := options["vault/filePermissions"]
+	if ok {
+		tokenFilePermissionsInt, err := strconv.ParseUint(tokenFilePermissionsString, 8, 32)
+		if err != nil {
+			return flexvolume.Fail(fmt.Sprintf("Cannot convert option \"vault/filePermissions\" to integer: %v", err))
+		}
+		tokenFilePermissions = os.FileMode(tokenFilePermissionsInt)
+	}
+
 	poduidreg := regexp.MustCompile("[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{8}")
 	poduid := poduidreg.FindString(dir)
 	if poduid == "" {
@@ -80,7 +91,7 @@ func (v vaultSecretFlexVolume) Mount(dir string, dev string, options map[string]
 		return flexvolume.Fail(fmt.Sprintf("Couldn't obtain token: %v", err))
 	}
 
-	err = writeTokenData(token, metadata, dir, v.TokenFilename)
+	err = writeTokenData(token, metadata, dir, v.TokenFilename, tokenFilePermissions)
 	if err != nil {
 		err2 := cleanup(dir)
 		if err2 != nil {
