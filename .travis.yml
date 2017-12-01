@@ -7,6 +7,7 @@ deploy:
   api_key:
     secure: I6FL9fjMEklZYgx2J15XzZlpuRaDDdcaRgx/4RexLZXln4GP0Gb6He6Rf5qp9E8AVyqqX/i5Y3jX0Jq7KF56CiS+ZNpwmm/lY6VbII/eZ49o+ClbACPVI9zlhvao6Wv2fh7d9xEP/0KoQ+CljiZKylm9QrJfL2Q24t6OZE+bUhbibZiYysPPgs50QkzeF1NrW99M8g/BaDGUvImuBzFGIrqm0J7rG6IzhQrIX+icvuZxZV0MT6wUKpaBJH0SEkJo/sEBDXzkd5mSyS1JEbRmDVpUkWascEnIgURAYutTUqyjkVygl4ydEq42pQG22AJJKRMYSQRXkwVsj/PRq9icaVyNdtVIFf4vg7Gx8c3gi7nvQ5AkFX9UW9Qp6hNN0aRNYCtsVoksON4DK+nwOJIG7fviKSzzVIZPc0Y16f8Owi4ONasUcFMkxogsSNafphsYIBqA/4n+xlKdugMjhej9H++jiaTs13Uw6mRk1/hTRnrWlEZvHGwh5Yh59yi49SpG7ACN4iDOr0FoUJ6KtpZAYFo96J7CpTsrbMgHheA/LTlSeBxQC4NFGfOEK3lj4RrnOsdX/yO4VgckMW2a/vJPaeAxbL/4v6imG9Xcg7jBEMH/bK0JOtWNGQ35ZWlpUlQfFJ+P6qEn8oekcPnL1ZB/r+OnwyOcWaokUyCbvPfoDaE=
   file: vaulttmpfs
+  skip_cleanup: true
   on:
     repo: cloudwatt/kubernetes-flexvolume-vault-plugin
     tags: true
