@@ -1,4 +1,4 @@
-package: github.com/fcantournet/kubernetes-flexvolume-vault-plugin
+package: github.com/cloudwatt/kubernetes-flexvolume-vault-plugin
 import:
 - package: github.com/hashicorp/vault
   version: ^0.7.2

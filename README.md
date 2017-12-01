@@ -1,8 +1,9 @@
-[![Build Status](https://travis-ci.org/fcantournet/kubernetes-flexvolume-vault-plugin.svg?branch=master)](https://travis-ci.org/fcantournet/kubernetes-flexvolume-vault-plugin)
+[![Build Status](https://travis-ci.org/cloudwatt/kubernetes-flexvolume-vault-plugin.svg?branch=master)](https://travis-ci.org/cloudwatt/kubernetes-flexvolume-vault-plugin)
 
 # What is this ?
 
 This project is an implementation of the flexvolume kubernetes plugin to inject a scoped vault token inside pods at startup so they can get their secrets, via consul-template for instance.
+This is a fork from https://github.com/fcantournet/kubernetes-flexvolume-vault-plugin
 
 # How do I build it ?
 
@@ -10,7 +11,7 @@ Just run `make` ( or ` go build -o whatever .` where `whatever` is the name you 
 By default the name of the binary is `vaulttmpfs`
 All dependencies are vendored under `/vendor` with glide and commited, so you can build with just the go toolchain..
 
-You can also `go get github.com/fcantournet/kubernetes-flexvolume-vault-plugin`
+You can also `go get github.com/cloudwatt/kubernetes-flexvolume-vault-plugin`
 
 # How does it work ?
 

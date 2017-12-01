@@ -9,7 +9,7 @@ import (
 
 	"github.com/Songmu/prompter"
 
-	"github.com/fcantournet/kubernetes-flexvolume-vault-plugin/vault"
+	"github.com/cloudwatt/kubernetes-flexvolume-vault-plugin/vault"
 	vaultapi "github.com/hashicorp/vault/api"
 )
 

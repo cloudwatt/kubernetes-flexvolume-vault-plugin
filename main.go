@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/fcantournet/kubernetes-flexvolume-vault-plugin/flexvolume"
-	"github.com/fcantournet/kubernetes-flexvolume-vault-plugin/vault"
+	"github.com/cloudwatt/kubernetes-flexvolume-vault-plugin/flexvolume"
+	"github.com/cloudwatt/kubernetes-flexvolume-vault-plugin/vault"
 )
 
 const envGeneratorTokenPath = "VAULTTMPFS_GENERATOR_TOKEN_PATH"
