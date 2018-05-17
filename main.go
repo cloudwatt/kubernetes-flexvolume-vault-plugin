@@ -30,7 +30,11 @@ type vaultSecretFlexVolume struct {
 
 // Init is a no-op here but necessary to satisfy the interface
 func (v vaultSecretFlexVolume) Init() flexvolume.Response {
-	return flexvolume.Succeed("")
+	return flexvolume.Response{
+		Status:       "Success",
+		Message:      "",
+		Capabilities: &flexvolume.Capabilities{Attach: false},
+	}
 }
 
 // Attach is not necessary for this plugin but need to be implemented to satisfy the interface
